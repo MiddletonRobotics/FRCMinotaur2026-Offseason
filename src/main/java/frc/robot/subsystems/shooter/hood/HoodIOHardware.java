@@ -9,7 +9,7 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.CoastOut;
-import com.ctre.phoenix6.controls.PositionVoltage;
+import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
 import com.ctre.phoenix6.controls.StaticBrake;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -44,8 +44,7 @@ public class HoodIOHardware implements HoodIO {
         .withEnableFOC(true)
         .withUpdateFreqHz(0.0);
 
-    private final PositionVoltage positionRequest = new PositionVoltage(0.0)
-        .withEnableFOC(true)
+    private final PositionTorqueCurrentFOC positionRequest = new PositionTorqueCurrentFOC(0.0)
         .withUpdateFreqHz(0.0);
 
     private final CoastOut coastRequest = new CoastOut();
@@ -130,7 +129,7 @@ public class HoodIOHardware implements HoodIO {
             case BRAKE -> motor.setControl(brakeRequest);
             case COAST -> motor.setControl(coastRequest);
             case VOLTAGE_CONTROL -> motor.setControl(voltageRequest.withOutput(outputs.appliedVoltage));
-            case CLOSED_LOOP -> motor.setControl(positionRequest.withPosition(Units.radiansToRotations(outputs.position)));
+            case CLOSED_LOOP -> motor.setControl(positionRequest.withPosition(Units.radiansToRotations(outputs.position)).withVelocity(Units.radiansToRotations(outputs.velocity)));
         }
     }
 
