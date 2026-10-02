@@ -13,6 +13,7 @@ public class HoodConstants {
     public static final LoggedTunableNumber kD = new LoggedTunableNumber("Hood/Gains/kD", 0.0);
     public static final LoggedTunableNumber kS = new LoggedTunableNumber("Hood/Gains/kS", 0.0);
     public static final LoggedTunableNumber kV = new LoggedTunableNumber("Hood/Gains/kV", 0.0);
+    public static final LoggedTunableNumber kG = new LoggedTunableNumber("Hood/Gains/kG", 0.0);
     public static final LoggedTunableNumber kA = new LoggedTunableNumber("Hood/Gains/kA", 0.0);
 
     public static final boolean kMotorInverted = true;
@@ -25,6 +26,7 @@ public class HoodConstants {
     public static final double kMassKilograms = 5.89;
     public static final double kMOI = 0.5 * (0.5) * (Math.pow(Units.inchesToMeters(1.875), 2) + Math.pow(Units.inchesToMeters(2), 2));
 
+    public static final double kHomedPosition = Units.degreesToRadians(12.0);
     public static final double kMinimumPosition = Units.degreesToRadians(12.0);
     public static final double kMaximumPosition = Units.degreesToRadians(30.0);
 }
