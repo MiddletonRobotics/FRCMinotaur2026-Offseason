@@ -73,7 +73,7 @@ public class Hood extends SubsystemBase {
         outputs.mode = HoodIOOutputMode.CLOSED_LOOP;
 
         io.applyOutputs(outputs);
-        LoggedTracer.record("Hood/Periodic");
+        LoggedTracer.record("HoodPeriodic");
     }
 
     private void setGoalParameters(double angle, double velocity) {
