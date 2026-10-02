@@ -15,7 +15,7 @@ public interface HoodIO {
         public boolean temperatureFault = false;
     }
 
-    public enum HoodIOMode {
+    public enum HoodIOOutputMode {
         BRAKE,
         COAST,
         VOLTAGE_CONTROL,
@@ -23,10 +23,12 @@ public interface HoodIO {
     }
 
     public static class HoodIOOutputs {
-        public HoodIOMode mode = HoodIOMode.BRAKE;
+        public HoodIOOutputMode mode = HoodIOOutputMode.BRAKE;
         public double appliedVoltage = 0.0;
 
         public double position = 0.0;
+        public double velocity = 0.0;
+        
         public double kP = 0.0;
         public double kD = 0.0;
         public double kS = 0.0;
